@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.0.7/css/all.css"/>
+    
+    <style>
+        *{
+            box-sizing:border-box;
+            
+
+        }
+        body{
+            padding:0px;
+            margin:0px;
+            background-image: url("background.jpg");
+        }
+        header{
+            background: #008489;
+            height:66px;
+            
+        }
+        header *{
+            color:white;
+        }
+        header .logo{
+            float:left;
+            height:inherit;
+            margin-left:2em;
+            
+        }
+        header .logo-text{
+            margin:9px;
+            font-family:fantasy;
+        }
+        header .logo-text span{
+            color:#17edf5
+        }
+        header ul{
+            float:right;
+            margin:0px;
+            padding:0px;
+            list-style:none;
+            
+        }
+        header ul li{
+            float:left;
+            position:relative;
+        }
+        header ul li ul{
+            position:absolute;
+            top:66px;
+            right:0px;
+            width:180px;
+            display:none;
+
+        }
+        header ul li:hover ul{
+            display:block;
+        }
+        header ul li ul li{
+            width:100%;
+        }
+        header ul li ul li a{
+            padding:10px;
+            color:#444;
+            background: white;
+        
+        }
+        header ul li ul li a:hover{
+            background: #d5d6d6;
+        }
+        header ul li a{
+            display:block;
+            padding:21px;
+            font-size:1.1em;
+            text-decoration: none;
+        }
+        header ul li a:hover{
+            background: #005457;
+            transition:0.5s;
+        }
+        header .menu-toggle{
+            display:none;
+        }
+        :root{
+            font-size:10px;
+        }
+        *,
+        *::before,
+        *::after{
+            box-sizing: border-box;
+        }
+        
+        .btn{
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            font: inherit;
+            background: none;
+            border: none;
+            color: inherit;
+            padding: 0;
+            cursor:pointer;
+        }
+        :focus{
+            outline-color: #fa0;
+        }
+        .board-info-bar{
+            flex-basis:3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin:0.8rem 0;
+            padding:0 1rem;
+            columns: #f6f6f6;
+        }
+        .board-controls{
+            display:flex;
+        }
+        .board-info-bar{
+             flex-basis:3rem ;
+             display:flex;
+             align-items:center;
+             justify-content: space-between;
+             margin:0.8rem o;
+             padding:0 1rem;
+             color:#f6f6f6;
+        }
+        .board-controls{
+            display:flex;
+        }
+        .board-controls.btn{
+            margin-right:1rem;
+
+        }
+        .board-controls.btn:last-of-type{
+            margin-right:0;
+
+        }
+        .board-info-bar.btn{
+            font-size:1.4rem;
+            font-weight: 400;
+            transition: background-color 150ms;
+            padding:0 0.6rem;
+            border-radius: 0.3rem;
+            height:3rem;
+
+        }
+        .board-info-bar.btn:hover{
+            background-color: #006aa8;
+        }
+        .board-title h2{
+            font-size:1.8rem;
+            font-weight:700;
+            white-space:nowrap;
+        }
+        .lists-container::-webkit-scrollbar{
+            height:2.4rem;
+        }
+        .lists-container{
+            display:flex;
+            align-items: start;
+            padding:0 0.8rem 0.8rem;
+            overflow-x:auto;
+            height:calc(100vh-8.6rem);
+        }
+        .list{
+            flex:0 0 27rem;
+            display:flex;
+            flex-direction:column;
+            background-color: #e2e4e6;
+            max-height: calc(100vh-11.8rem);
+            border-radius:0.3rem;
+            margin-right:1rem;
+        }
+        .list:last-of-type{
+            margin-right:0;
+        }
+        .list-title{
+            font-size:1.4rem;
+            font-weight:700;
+            color:#333;
+            padding:1rem;
+
+        }
+        .list-items{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            align-content: start;
+            padding:0 0.6rem 0.5rem;
+            overflow-y:auto;
+        }
+        .list-items::-webkit-scrollbar{
+            width:1.6rem;
+        }
+        .list-items::-webkit-scrollbar-thumb{
+            background-color: #c4c9cc;
+            border-right: 0.6rem solid #e2e4e6;
+
+        }
+        .list-items li{
+            font-size:1.4rem;
+            font-weight:400;
+            line-height:1.3;
+            background-color: #fff;
+            padding:0.65rem 0.6rem;
+            columns: #4d4d4d;
+            border-bottom:0.1rem solid #ccc;
+            border-radius:0.3rem;
+            margin-bottom: 0.6rem;
+            word-wrap:break-word;
+            cursor:pointer;
+        }
+        .list-items li:last-of-type{
+            margin-bottom:0;
+        }
+        .list-items li:hover{
+            background-color:#eee;
+        }
+        .add-card-btn{
+            display:block;
+            font-size:1.4rem;
+            font-weight:400;
+            color:#838c91;
+            padding:1rem;
+            text-align: left;
+            cursor:pointer;
+
+        }
+        .add-card-btn:hover{
+            background-color: #cdd2d4;
+            color:#4d4d4d;
+            text-decoration:underline ;
+        }
+        add-list-btn{
+            flex:0 0 27rem;
+            display:block;
+            font-size:1.4rem;
+            font-weight:400;
+            background-color: #006aa7;
+            color:#a5cae0;
+            padding:1rem;
+            border-radius:0.3rem;
+            transition:background-color 150ms;
+            text-align: left;
+            cursor:pointer;
+
+        }
+        .add-list-btn:hover{
+            background-color: #cdd2d4;
+        }
+        .add-card-btn::after,.add-list-btn::after{
+            content:'...';
+        }
+        .add-btn{
+            display:block;
+            width:40%;
+            font-size:1.4rem;
+            font-weight:400;
+            padding:1rem;
+            text-align: left;
+            cursor:pointer;
+            background-color: olive;
+            
+
+
+        }
+        .add-btn:hover{
+            background-color: #cdd2d4;
+        }
+        *{
+            box-sizing:border-box;
+        }
+        .fa-ellipsis-v{
+            color:#444;
+        }
+
+    </style>
+   
+</head>
+<body>
+    <header>
+        <div  class="logo">
+            <h1 class="logo-text"><span>Tra</span>lala</h1>
+        </div>
+    
+        <i class="fa fa-bars menu-toggle">Board</i>
+        <ul class="nav">
+            <li><a href="#"><form class="search-form">
+                <input type="text"placeholder="Search">
+                <button>Search</button>
+            </form></a></li>
+            <li><a href="#"><i class="fa fa-home"></i>Home<i class="fa fa-chevron-down"></i></a>
+                <ul>
+                    <li><a href="#" class="logout"><i class="fa fa-ellipsis-v"></i>show menu</a></li>
+                </ul></a>
+               
+            <li><a href="#"><i class="fa fa-bars"></i>Board</a></li>
+            <li><a href="#">About</a></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user"></i>User <i class="fa fa-chevron-down"></i></a>
+                <ul>
+                    <li><a href="#" class="logout">Logout</a></li>
+                </ul>
+            </li>
+
+        </ul>
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="board-info-bar">
+        <div class="board-controls btn"></div>
+        
+    </div>
+    <div class="lists-container">
+        <div class="list">
+            <h3 class="list-title">Task to do</h3>
+            <ul class="list-items">
+                <li>learn HTML</li>
+                <li>learn CSS</li>
+                <li>learn JavaScript</li>
+            </ul>
+            <button class="add-card-btn">+ Add another card</button>
+        </div>
+        <div class="list">
+            <h3 class="list-title">Task doing</h3>
+            <ul class="list-items">
+                <li>prepare Resume</li>
+                <li input="text">Enter a title for this card...</li>
+        
+            </ul>
+            <button class="add-btn">Add Card</button>
+        </div>
+        <div class="list">
+            <h3 class="list-title">Testing/verifying</h3>
+            <ul class="list-items">
+                <li>Twitter app front-end</li>
+            
+            </ul>
+            <button class="add-card-btn">+ Add another card</button>
+        </div>
+        <div class="list">
+            <h3 class="list-title">Deploying</h3>
+            <ul class="list-items">
+                <li>Twitter app back-end</li>
+               
+            </ul>
+            <button class="add-card-btn">+ Add another card</button>
+        </div>
+        <div class="list">
+            <h3 class="list-title">Task done</h3>
+            <ul class="list-items">
+                <li>interview</li>
+                
+        
+            </ul>
+            <button class="add-card-btn">+ Add another card</button>
+        </div>
+        <div >
+            <button class="add-list-btn">+ Add another list</button>
+        </div>
+        
+    
+    </div>
+   
+    
+</body>
+</html>
